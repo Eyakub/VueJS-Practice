@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Component</title>
+        <link rel="stylesheet" href="component.css" type="text/css" />
+    </head>
+    <body>
+        <div id="app">
+            <!-- <panel title="Eyakub" content="This is my panel"></panel> -->
+            <panel title="MD Eyakub Sorkar">
+                <h1>Enter your name:</h1>
+                <input type="text" name="" />
+                <button>Submit</button>
+            </panel>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script type="text/javascript">
+            // global that function can use by anywhere of this page
+            Vue.component("panel", {
+                template: `
+                <div class="panel" v-if="show">
+                    <div class="panelTitle">
+                        <div class="close" @click="show=false">X</div>
+                        {{ title }}
+                    </div>
+                    <div class="panelContent">
+                        <slot></slot>
+                    </div>
+                </div>
+            `,
+                props: ["title", "content"],
+                data: function() {
+                    return {
+                        show: true
+                    };
+                }
+            });
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    name: "MD Eyakub Sorkar",
+                    profession: "Software Engineer",
+                    today: new Date()
+                }
+            });
+        </script>
+    </body>
+</html>

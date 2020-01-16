@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Computed Properties</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body >
+    <div id="app">
+        <h1>Payments </h1>
+        <hr>
+        <ul>
+            <li v-for="(payment,i) in payments">
+                <p>
+                    {{payment.name}} {{ payment.amount}}
+                </p>
+            </li>
+        </ul>
+        <hr>
+        <h1>Unpaid Payments</h1>
+        <ul>
+            <li v-for="(payment, i) in unpaidPayments">
+                <p>
+                    {{payment.name}} {{payment.amount}}
+                </p>
+            </li>
+        </ul>
+        <h2>Total Amount: {{ totalAMount }}</h2>
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el: "#app",
+            data: {
+                payments: [
+                    {name: "houseRent", amount: 15000, paid:true},
+                    {name: "electricity", amount: 1200, paid:false},
+                    {name: "net", amount: 1500, paid:true},
+                ]
+            },
+            
+            // this properties are not declared but we can use
+            computed: {
+                unpaidPayments (){
+                    return this.payments.filter(function(p){
+                        return !p.paid;
+                    });
+                },
+
+                totalAMount (){
+                    var sum = 0;
+                    for(var i = 0; i < this.payments.length; i++){
+                        sum += this.payments[i].amount;
+                    }
+                    return sum;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

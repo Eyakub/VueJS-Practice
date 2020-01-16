@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Filter</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body >
+    <div id="app">
+        <h1>{{ name | upper }}</h1>
+        <h1>{{ profession | lower}}</h1>
+        <h1>{{ today | bdFormat }}</h1>
+    </div>
+
+    <script type="text/javascript">
+
+        // global that function can use by anywhere of this page
+        Vue.filter("lower", function(s){
+            return s.toLowerCase();
+        })
+        var app = new Vue({
+            el: "#app",
+            data: {
+                name: "MD Eyakub Sorkar",
+                profession: "Software Engineer",
+                today: new Date()
+            },
+            
+            // this properties are not declared but we can use
+            computed: {
+                upperCaseName (){
+                    return this.name.toUpperCase();
+                }
+            },
+
+            filters: {
+                // available only inside the app 
+                upper (s){
+                    return s.toUpperCase();
+                },
+                bdFormat (d){
+                    return d.getUTCDate() + "-" + (d.getUTCMonth()) + "-" + d.getUTCFullYear();
+                }
+            }
+        })
+    </script>
+</body>
+</html>
