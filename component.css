@@ -68,3 +68,34 @@ body{
     padding: 9px;
     color: #505050;
 }
+
+
+/*=============tab============*/
+.tab{
+    border: 1px splid #4C4C4C;
+    width: 960px;
+    min-height: 111px;
+    background: #FFFFFF;
+    margin: 44px auto;
+}
+
+.tab ul{
+    margin: 0;
+    list-style: none;
+    background: #B5B5B5;
+}
+
+.tab li{
+    display:inline-block;
+    cursor: pointer;
+    padding: 9px;
+    margin-top: 9px;
+}
+
+.tab li.active{
+    background: #FFFFFF;
+}
+
+.details{
+    padding: 44px;
+}

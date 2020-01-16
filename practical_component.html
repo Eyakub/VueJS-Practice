@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Component</title>
+        <link rel="stylesheet" href="component.css" type="text/css" />
+    </head>
+    <body>
+        <div id="app">
+            <div class="tab">
+                <ul>
+                    <li class="active">
+                        Tab 1
+                    </li>
+                    <li>Tab 2</li>
+                    <li>Tab 3</li>
+                </ul>
+                <div class="details">
+                    <div>Tab1 Content... <button>Button 1</button></div>
+                    <div>Tab 2</div>
+                    <div>Tab 3</div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script type="text/javascript">
+            // global that function can use by anywhere of this page
+            Vue.component("modal", {
+                template: `
+                <div class="modal">
+                    
+                </div>
+            `,
+                props: ["title", "content"],
+                data: function() {
+                    return {
+                        show: true
+                    };
+                }
+            });
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    showLogin: false
+                }
+            });
+        </script>
+    </body>
+</html>
